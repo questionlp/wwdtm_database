@@ -7,13 +7,16 @@ database running on either MySQL or MariaDB.
 
 ## Requirements
 
-- MySQL 5.6 or MariaDB 10.0 or newer
+- MySQL Server 5.6 or MariaDB Server 10.0 or newer
+- Support for InnoDB enabled for either MySQL Server or MariaDB server
 
 ## Installation
 
 This script is designed to be run against a new and empty MySQL or MariaDB
 database. It can be imported using the `mysql` or `mariadb` command line
 tool or using any compatible database management tool.
+
+All of the tables are created as InnoDB and use a default charset of `utf8`.
 
 ## Contributing
 
