@@ -18,6 +18,14 @@ tool or using any compatible database management tool.
 
 All of the tables are created as InnoDB and use a default charset of `utf8`.
 
+## Database Diagram
+
+The following database diagram of the database was generated using [MySQL Workbench](https://www.mysql.com/products/workbench/):
+
+![Wait Wait Don't Tell Me Stats Page Database Diagram](wwdtm%20Diagram.png)
+
+A copy of the MySQL Workbench diagram file is included in this repository as [wwdtm Database.mwb](wwdtm%20Diagram.mwb).
+
 ## Contributing
 
 If you would like contribute to this project, please make sure to review both
