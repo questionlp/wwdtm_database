@@ -2,7 +2,8 @@
 
 ## Overview
 
-This repository contains the initial database schema for the [Wait Wait Don't Tell Me! Stats Page](https://stats.wwdt.me)
+This repository contains the initial database schema for the
+[Wait Wait Don't Tell Me! Stats Page](https://stats.wwdt.me)
 database running on either MySQL or MariaDB.
 
 ## Requirements
@@ -18,13 +19,43 @@ tool or using any compatible database management tool.
 
 All of the tables are created as InnoDB and use a default charset of `utf8`.
 
-## Database Diagram
+## Database Versions
 
-The following database diagram of the database was generated using [MySQL Workbench](https://www.mysql.com/products/workbench/):
+### Version 4 (Current)
 
-![Wait Wait Don't Tell Me Stats Page Database Diagram](wwdtm%20Diagram.png)
+The initial database script and database diagram files for version 4 of the
+Stats Page database are located in the `v4` directory.
 
-A copy of the MySQL Workbench diagram file is included in this repository as [wwdtm Database.mwb](wwdtm%20Diagram.mwb).
+This version of the database corresponds with the current versions of the
+following Wait Wait... Don't Tell Me! projects.
+
+- [libwwdtm](https://github.com/questionlp/libwwdtm)
+- [api.wwdt.me](https://github.com/questionlp/api.wwdt.me)
+- [graphs.wwdt.me](https://github.com/questionlp/graphs.wwdt.me)
+- [reports.wwdt.me](https://github.com/questionlp/reports.wwdt.me)
+- [stats.wwdt.me](https://github.com/questionlp/stats.wwdt.me)
+- [wwdtm_slugify](https://github.com/questionlp/wwdtm_slugify)
+
+The database diagram for the database was generated using
+[MySQL Workbench](https://www.mysql.com/products/workbench/):
+
+![Wait Wait Don't Tell Me Stats Page Database Diagram](v4/wwdtm_Diagram.png)
+
+### Version 3
+
+The initial database script and database diagram files for version 4 of the
+Stats Page database are located in the `v3` directory.
+
+This version of the database corresponds with the legacy versions of the Wait
+Wait... Don't Tell Me! Stats Page web application:
+
+- [wwdtm_v2](https://github.com/questionlp/wwdt.me_v2)
+- [wwdtm_v3](https://github.com/questionlp/wwdt.me_v3)
+
+The database diagram for the database was generated using
+[MySQL Workbench](https://www.mysql.com/products/workbench/):
+
+![Wait Wait Don't Tell Me Stats Page Database Diagram](v3/wwdtm_Diagram.png)
 
 ## Contributing
 
