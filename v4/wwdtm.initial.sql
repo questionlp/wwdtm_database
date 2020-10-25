@@ -2,7 +2,8 @@
 -- Copyright (c) 2018-2020 Linh Pham
 -- wwdtm_database is relased under the terms of the Apache License 2.0
 
--- Wait Wait... Don't Tell Me! Stats Page Initial Database Structure
+-- Wait Wait... Don't Tell Me! Stats Page Version 4
+-- Initial Database Structure
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
