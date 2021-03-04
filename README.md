@@ -21,10 +21,15 @@ All of the tables are created as InnoDB and use a default charset of `utf8`.
 
 ## Database Versions
 
-### Version 4 (Current)
+### Version 4.1 (Current)
 
 The initial database script and database diagram files for version 4 of the
-Stats Page database are located in the `v4` directory.
+Stats Page database are located in the `v4.1` directory.
+
+Version 4.1 brings the database, tables and all text columns to use the `utf8mb4`
+character set and `utf8mb4_unicode_ci` collation instead of `utf8` and
+`utf8_general_ci` used in prior versions. The change in character set did not
+require any changes in column data types, sizes or indexes.
 
 This version of the database corresponds with the current versions of the
 following Wait Wait... Don't Tell Me! projects.
@@ -39,7 +44,15 @@ following Wait Wait... Don't Tell Me! projects.
 The database diagram for the database was generated using
 [MySQL Workbench](https://www.mysql.com/products/workbench/):
 
-![Wait Wait Don't Tell Me Stats Page Database Diagram](v4/wwdtm_Diagram.png)
+![Wait Wait Don't Tell Me Stats Page Database Diagram](v4.1/wwdtm_Diagram.png)
+
+### Version 4
+
+The initial database script and database diagram files for version 4 of the
+Stats Page database are located in the `v4` directory.
+
+Version 4 of the database sheds all of the views that were created for previous
+versions of the database and the Stats Page.
 
 ### Version 3
 
