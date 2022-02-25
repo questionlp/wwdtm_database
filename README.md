@@ -35,10 +35,13 @@ This version of the database corresponds with the current versions of the
 following Wait Wait... Don't Tell Me! projects.
 
 - [libwwdtm](https://github.com/questionlp/libwwdtm)
+- [wwdtm](https://github.com/questionlp/wwdtm)
 - [api.wwdt.me](https://github.com/questionlp/api.wwdt.me)
+- [api.wwdt.me_v2](https://github.com/questionlp/api.wwdt.me_v2)
 - [graphs.wwdt.me](https://github.com/questionlp/graphs.wwdt.me)
 - [reports.wwdt.me](https://github.com/questionlp/reports.wwdt.me)
 - [stats.wwdt.me](https://github.com/questionlp/stats.wwdt.me)
+- [stats.wwdt.me_v5](https://github.com/questionlp/stats.wwdt.me_v5)
 - [wwdtm_slugify](https://github.com/questionlp/wwdtm_slugify)
 
 The database diagram for the database was generated using
