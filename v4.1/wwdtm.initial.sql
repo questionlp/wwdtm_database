@@ -1,6 +1,6 @@
 -- -*- coding: utf-8 -*-
--- Copyright (c) 2018-2021 Linh Pham
--- wwdtm_database is relased under the terms of the Apache License 2.0
+-- Copyright (c) 2018-2023 Linh Pham
+-- wwdtm_database is released under the terms of the Apache License 2.0
 
 -- Wait Wait... Don't Tell Me! Stats Page Version 4
 -- Initial Database Structure for Version 4.1
