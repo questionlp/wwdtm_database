@@ -231,7 +231,7 @@ CREATE TABLE `ww_showpnlmap` (
   `panelistlrndcorrect` int DEFAULT NULL,
   `panelistscore` int DEFAULT NULL,
   `showpnlrank` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `panelistscore_decimal` decimal(5,2) DEFAULT NULL,
+  `panelistscore_decimal` decimal(10,3) DEFAULT NULL,
   PRIMARY KEY (`showpnlmapid`),
   KEY `wwshowpnlmap_wwshows_showid` (`showid`),
   KEY `wwshowpnlmap_wwpanelists_panelistid` (`panelistid`),
