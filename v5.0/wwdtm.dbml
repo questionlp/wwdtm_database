@@ -1,0 +1,140 @@
+//
+// Project wwdtm_v5 {
+//     Note: 'wwdtm Stats Database v5'
+// }
+//
+
+Table shows {
+  id integer [pk, unique, increment]
+  show_date date [unique]
+  repeat boolean [default: false]
+  best_of boolean [default: false]
+  unique_bluff boolean [default: false]
+}
+
+Table repeat_shows {
+  id integer [pk, unique, increment]
+  show_id integer
+  original_show_id integer
+}
+
+Table show_info {
+  id integer [pk, unique, increment]
+  show_id integer
+  description text
+  notes text
+}
+
+Ref: repeat_shows.show_id > shows.id
+Ref: repeat_shows.original_show_id > shows.id
+Ref: show_info.show_id > shows.id
+
+Table hosts {
+  id integer [pk, unique, increment]
+  name varchar
+  slug varchar
+  pronouns varchar
+}
+
+Table show_hosts_map {
+  id integer [pk, unique, increment]
+  show_id integer
+  host_id integer
+}
+
+Ref: show_hosts_map.show_id > shows.id
+Ref: show_hosts_map.host_id > hosts.id
+
+Table scorekeepers {
+  id integer [pk, unique, increment]
+  name varchar
+  slug varchar
+  pronouns varchar
+}
+
+Table show_scorekeepers_map {
+  id integer [pk, unique, increment]
+  show_id integer
+  scorekeeper_id integer
+}
+
+Ref: show_scorekeepers_map.show_id > shows.id
+Ref: show_scorekeepers_map.scorekeeper_id > scorekeepers.id
+
+Table panelists {
+  id integer [pk, unique, increment]
+  name varchar
+  slug varchar
+  pronouns varchar
+}
+
+Table show_panelists_map {
+  id integer [pk, unique, increment]
+  show_id integer
+  panelist_id integer
+  lightning_start decimal
+  lightning_correct decimal
+  lightning_total decimal
+  rank varchar
+}
+
+Ref: show_panelists_map.show_id > shows.id
+Ref: show_panelists_map.panelist_id > panelists.id
+
+Table guests {
+  id integer [pk, unique, increment]
+  name varchar
+  slug varchar
+}
+
+Table show_guests_map {
+  id integer [pk, unique, increment]
+  show_id integer
+  guest_id integer
+  guest_score decimal
+  exception boolean [default: false]
+}
+
+Ref: show_guests_map.show_id > shows.id
+Ref: show_guests_map.guest_id > guests.id
+
+Table locations {
+  id integer [pk, unique, increment]
+  venue varchar
+  city varchar
+  state varchar
+  slug varchar
+  latitude decimal
+  longitude decimal
+}
+
+Table show_locations_map {
+  id integer [pk, unique, increment]
+  show_id integer
+  location_id integer
+}
+
+Ref: show_locations_map.show_id > shows.id
+ref: show_locations_map.location_id > locations.id
+
+Table segment_types {
+  id integer [pk, unique, increment]
+  type varchar
+}
+
+Table segments {
+  id integer [pk, unique, increment]
+  name varchar
+  type_id integer
+}
+
+Table show_segments {
+  id integer [pk, unique, increment]
+  show_id integer
+  segment_id integer
+  description varchar
+}
+
+Ref: segments.type_id > segment_types.id
+Ref: show_segments.show_id > shows.id
+Ref: show_segments.segment_id > segments.id
