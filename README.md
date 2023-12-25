@@ -26,6 +26,14 @@ Version 4.4 brings support for multiple Bluff the Listener-like segments for eac
 
 Due to issues with trying to generate diagrams using either MySQL Workbench or JetBrains DataGrip, I used [dbdiagram.io](https://dbdiagram.io/) to generate the diagrams for this version of the database. In lieu of a MySQL Workbench diagram file, a DBML representation of the database is included.
 
+The new version of the database will be used for upcoming versions of the following projects:
+
+- [wwdtm](https://github.com/questionlp/wwdtm)
+- [api.wwdt.me_v2](https://github.com/questionlp/api.wwdt.me_v2)
+- [graphs.wwdt.me_v2](https://github.com/questionlp/graphs.wwdt.me_v2)
+- [reports.wwdt.me_v2](https://github.com/questionlp/reports.wwdt.me_v2)
+- [stats.wwdt.me_v5](https://github.com/questionlp/stats.wwdt.me_v5)
+
 ### Version 4.3
 
 The initial database script and database diagram files for version 4.3 of the Stats Page database are located in the `v4.3` directory.
@@ -48,7 +56,6 @@ This version of the database corresponds with the current versions of the follow
 
 - Active Projects
   - [wwdtm](https://github.com/questionlp/wwdtm)
-  - [api.wwdt.me](https://github.com/questionlp/api.wwdt.me)
   - [api.wwdt.me_v2](https://github.com/questionlp/api.wwdt.me_v2)
   - [graphs.wwdt.me_v2](https://github.com/questionlp/graphs.wwdt.me_v2)
   - [reports.wwdt.me_v2](https://github.com/questionlp/reports.wwdt.me_v2)
@@ -56,6 +63,7 @@ This version of the database corresponds with the current versions of the follow
   - [wwdtm_slugify](https://github.com/questionlp/wwdtm_slugify)
 - Archived or Deprecated Projects
   - [libwwdtm](https://github.com/questionlp/libwwdtm)
+  - [api.wwdt.me](https://github.com/questionlp/api.wwdt.me)
   - [graphs.wwdt.me](https://github.com/questionlp/graphs.wwdt.me)
   - [reports.wwdt.me](https://github.com/questionlp/reports.wwdt.me)
   - [stats.wwdt.me](https://github.com/questionlp/stats.wwdt.me)
