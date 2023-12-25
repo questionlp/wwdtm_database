@@ -6,7 +6,8 @@ This repository contains the initial database schema for the [Wait Wait Don't Te
 
 ## Requirements
 
-- MySQL Server 5.6 or MariaDB Server 10.0 or newer
+- MySQL Server 8.0 or newer for Wait Wait Stats Database versions 4.0 and higher
+- MySQL Server 5.6 or MariaDB Server 10.0 or newer for Wait Wait Stats Database versions below 4.0
 - Support for InnoDB enabled for either MySQL Server or MariaDB server
 
 ## Installation
@@ -17,9 +18,29 @@ All of the tables are created as InnoDB and use a default charset of `utf8`.
 
 ## Database Versions
 
-### Version 4.1 (Current)
+### Version 4.4 (Current)
 
-The initial database script and database diagram files for version 4 of the Stats Page database are located in the `v4.1` directory.
+The initial database script and database diagram files for version 4.4 of the Stats Page database are located in the `v4.4` directory.
+
+Version 4.4 brings support for multiple Bluff the Listener-like segments for each show by adding a new `segment` column to the `ww_showbluffmap` table. The column's default value is `1` and should be incremented for each additional segment for a given show ID.
+
+Due to issues with trying to generate diagrams using either MySQL Workbench or JetBrains DataGrip, I used [dbdiagram.io](https://dbdiagram.io/) to generate the diagrams for this version of the database. In lieu of a MySQL Workbench diagram file, a DBML representation of the database is included.
+
+### Version 4.3
+
+The initial database script and database diagram files for version 4.3 of the Stats Page database are located in the `v4.3` directory.
+
+Version 4.3 brings support for storing panelist starting scores and correct answers as decimal values by way of the new `panelistlrndstart_decimal` and `panelistlrndcorrect_decimal` columns in the `ww_showpnlmap` table.
+
+### Version 4.2
+
+The initial database script and database diagram files for version 4.2 of the Stats Page database are located in the `v4.2` directory.
+
+Version 4.2 brings support for storing panelist scores as a decimal value by way of the new `panelistscore_decimal` column in the `ww_showpnlmap` table.
+
+### Version 4.1
+
+The initial database script and database diagram files for version 4.1 of the Stats Page database are located in the `v4.1` directory.
 
 Version 4.1 brings the database, tables and all text columns to use the `utf8mb4` character set and `utf8mb4_unicode_ci` collation instead of `utf8` and `utf8_general_ci` used in prior versions. The change in character set did not require any changes in column data types, sizes or indexes.
 
