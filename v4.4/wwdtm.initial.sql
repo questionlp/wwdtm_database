@@ -3,7 +3,7 @@
 -- wwdtm_database is released under the terms of the Apache License 2.0
 
 -- Wait Wait... Don't Tell Me! Stats Page Version 4
--- Initial Database Structure for Version 4.3
+-- Initial Database Structure for Version 4.4
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -114,6 +114,7 @@ DROP TABLE IF EXISTS `ww_showbluffmap`;
 CREATE TABLE `ww_showbluffmap` (
   `showbluffmapid` int NOT NULL AUTO_INCREMENT,
   `showid` int NOT NULL,
+  `segment` int DEFAULT '1',
   `chosenbluffpnlid` int DEFAULT NULL,
   `correctbluffpnlid` int DEFAULT NULL,
   PRIMARY KEY (`showbluffmapid`),
