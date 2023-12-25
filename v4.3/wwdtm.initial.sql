@@ -3,7 +3,7 @@
 -- wwdtm_database is released under the terms of the Apache License 2.0
 
 -- Wait Wait... Don't Tell Me! Stats Page Version 4
--- Initial Database Structure for Version 4.2
+-- Initial Database Structure for Version 4.3
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
