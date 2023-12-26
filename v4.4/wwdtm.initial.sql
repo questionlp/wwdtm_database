@@ -114,7 +114,7 @@ DROP TABLE IF EXISTS `ww_showbluffmap`;
 CREATE TABLE `ww_showbluffmap` (
   `showbluffmapid` int NOT NULL AUTO_INCREMENT,
   `showid` int NOT NULL,
-  `segment` int DEFAULT '1',
+  `segment` int NOT NULL DEFAULT '1',
   `chosenbluffpnlid` int DEFAULT NULL,
   `correctbluffpnlid` int DEFAULT NULL,
   PRIMARY KEY (`showbluffmapid`),
