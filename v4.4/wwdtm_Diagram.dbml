@@ -57,7 +57,7 @@ Indexes {
 Table "ww_showbluffmap" {
   "showbluffmapid" int [pk, not null, increment]
   "showid" int [not null]
-  "segment" int [default: "1"]
+  "segment" int [not null, default: "1"]
   "chosenbluffpnlid" int [default: NULL]
   "correctbluffpnlid" int [default: NULL]
 

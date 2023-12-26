@@ -24,8 +24,6 @@ The initial database script and database diagram files for version 4.4 of the St
 
 Version 4.4 brings support for multiple Bluff the Listener-like segments for each show by adding a new `segment` column to the `ww_showbluffmap` table. The column's default value is `1` and should be incremented for each additional segment for a given show ID.
 
-Due to issues with trying to generate diagrams using either MySQL Workbench or JetBrains DataGrip, I used [dbdiagram.io](https://dbdiagram.io/) to generate the diagrams for this version of the database. In lieu of a MySQL Workbench diagram file, a DBML representation of the database is included.
-
 The new version of the database will be used for upcoming versions of the following projects:
 
 - [wwdtm](https://github.com/questionlp/wwdtm)
@@ -33,6 +31,10 @@ The new version of the database will be used for upcoming versions of the follow
 - [graphs.wwdt.me_v2](https://github.com/questionlp/graphs.wwdt.me_v2)
 - [reports.wwdt.me_v2](https://github.com/questionlp/reports.wwdt.me_v2)
 - [stats.wwdt.me_v5](https://github.com/questionlp/stats.wwdt.me_v5)
+
+Due to issues with trying to generate diagrams using either MySQL Workbench or JetBrains DataGrip, I used [dbdiagram.io](https://dbdiagram.io/) to generate the diagrams for this version of the database. In lieu of a MySQL Workbench diagram file, a DBML representation of the database is included.
+
+![Wait Wait Don't Tell Me Stats Page Database Diagram](v4.4/wwdtm_Diagram.png)
 
 ### Version 4.3
 
@@ -67,10 +69,6 @@ This version of the database corresponds with the current versions of the follow
   - [graphs.wwdt.me](https://github.com/questionlp/graphs.wwdt.me)
   - [reports.wwdt.me](https://github.com/questionlp/reports.wwdt.me)
   - [stats.wwdt.me](https://github.com/questionlp/stats.wwdt.me)
-
-The database diagram for the database was generated using [MySQL Workbench](https://www.mysql.com/products/workbench/):
-
-![Wait Wait Don't Tell Me Stats Page Database Diagram](v4.1/wwdtm_Diagram.png)
 
 ### Version 4
 
