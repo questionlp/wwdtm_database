@@ -138,7 +138,7 @@ Table "ww_shows" {
   "repeatshowid" int [default: NULL]
   "bestof" tinyint(1) [not null, default: "0"]
   "bestofuniquebluff" tinyint(1) [not null, default: "0"]
-  "showurl" varchar(255) [default: NULL]
+  "showurl" varchar(500) [default: NULL]
 
 Indexes {
   repeatshowid [name: "wwshows_repeatshowid_showid"]
