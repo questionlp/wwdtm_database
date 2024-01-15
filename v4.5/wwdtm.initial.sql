@@ -256,7 +256,7 @@ CREATE TABLE `ww_shows` (
   `repeatshowid` int DEFAULT NULL,
   `bestof` tinyint(1) NOT NULL DEFAULT '0',
   `bestofuniquebluff` tinyint(1) NOT NULL DEFAULT '0',
-  `showurl` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `showurl` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`showid`),
   KEY `wwshows_repeatshowid_showid` (`repeatshowid`),
   CONSTRAINT `wwshows_repeatshowid_showid` FOREIGN KEY (`repeatshowid`) REFERENCES `ww_shows` (`showid`)
