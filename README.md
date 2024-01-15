@@ -18,7 +18,7 @@ All of the tables are created as InnoDB and use a default charset of `utf8`.
 
 ## Database Versions
 
-### Version 4.5 (Development)
+### Version 4.5 (Current)
 
 The initial database script and database diagram files for version 4.5 of the Stats Page database are located in the `v4.5` directory.
 
@@ -28,7 +28,7 @@ Due to issues with trying to generate diagrams using either MySQL Workbench or J
 
 ![Wait Wait Don't Tell Me Stats Page Database Diagram](v4.5/wwdtm_Diagram.png)
 
-### Version 4.4 (Current)
+### Version 4.4
 
 The initial database script and database diagram files for version 4.4 of the Stats Page database are located in the `v4.4` directory.
 
