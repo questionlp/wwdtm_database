@@ -18,6 +18,20 @@ All of the tables are created as InnoDB and use a default charset of `utf8`.
 
 ## Database Versions
 
+### Version 4.6 (Development)
+
+The initial database script and database diagram files for version 4.5 of the Stats Page database are located in the `v4.5` directory.
+
+Version 4.6 includes the following changes:
+
+- Added `latitude` and `longitude` fields to the `ww_locations` table that will be used to store the corresponding values for each location
+- Added `ww_pronouns` table to store options for preferred pronouns
+- Added `hostpronouns`, `panelistpronouns` and `scorekeeperpronouns` column to `ww_hosts`, `ww_panelists` and `ww_scorekeepers` tables respectively. The columns reference the `pronounsid` column in the `ww_pronouns` table
+
+Due to issues with trying to generate diagrams using either MySQL Workbench or JetBrains DataGrip, I used [dbdiagram.io](https://dbdiagram.io/) to generate the diagrams for this version of the database. In lieu of a MySQL Workbench diagram file, a DBML representation of the database is included.
+
+![Wait Wait Don't Tell Me Stats Page Database v4.6 Diagram](v4.6/wwdtm_Diagram.png)
+
 ### Version 4.5 (Current)
 
 The initial database script and database diagram files for version 4.5 of the Stats Page database are located in the `v4.5` directory.
@@ -26,7 +40,7 @@ Version 4.5 adds a `showurl` field to the `ww_shows` table that will be used to 
 
 Due to issues with trying to generate diagrams using either MySQL Workbench or JetBrains DataGrip, I used [dbdiagram.io](https://dbdiagram.io/) to generate the diagrams for this version of the database. In lieu of a MySQL Workbench diagram file, a DBML representation of the database is included.
 
-![Wait Wait Don't Tell Me Stats Page Database Diagram](v4.5/wwdtm_Diagram.png)
+![Wait Wait Don't Tell Me Stats Page Database v4.5 Diagram](v4.5/wwdtm_Diagram.png)
 
 ### Version 4.4
 
@@ -44,7 +58,7 @@ The new version of the database will be used for upcoming versions of the follow
 
 Due to issues with trying to generate diagrams using either MySQL Workbench or JetBrains DataGrip, I used [dbdiagram.io](https://dbdiagram.io/) to generate the diagrams for this version of the database. In lieu of a MySQL Workbench diagram file, a DBML representation of the database is included.
 
-![Wait Wait Don't Tell Me Stats Page Database Diagram](v4.4/wwdtm_Diagram.png)
+![Wait Wait Don't Tell Me Stats Page Database v4.4 Diagram](v4.4/wwdtm_Diagram.png)
 
 ### Version 4.3
 
