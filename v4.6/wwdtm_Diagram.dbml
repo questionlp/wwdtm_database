@@ -14,7 +14,7 @@ Table "ww_hosts" {
   "hostid" int [pk, not null, increment]
   "host" varchar(255) [not null]
   "hostgender" char(1) [default: NULL]
-  "hostpronouns" int [default: NULL]
+  "hostpronouns" int [default: "1"]
   "hostslug" varchar(255) [default: NULL]
 
 Indexes {
@@ -37,7 +37,7 @@ Table "ww_panelists" {
   "panelistid" int [pk, not null, increment]
   "panelist" varchar(255) [not null]
   "panelistgender" char(1) [default: NULL]
-  "panelistpronouns" int [default: NULL]
+  "panelistpronouns" int [default: "1"]
   "panelistslug" varchar(255) [default: NULL]
 
 Indexes {
@@ -55,7 +55,7 @@ Table "ww_scorekeepers" {
   "scorekeeperid" int [pk, not null, increment]
   "scorekeeper" varchar(255) [not null]
   "scorekeepergender" char(1) [default: NULL]
-  "scorekeeperpronouns" int [default: NULL]
+  "scorekeeperpronouns" int [default: "1"]
   "scorekeeperslug" varchar(255) [default: NULL]
 
 Indexes {
