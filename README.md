@@ -18,11 +18,17 @@ All of the tables are created as InnoDB and use a default charset of `utf8`.
 
 ## Database Versions
 
-### Version 4.6 (Development)
+### Version 4.6.1 (Current)
 
-The initial database script and database diagram files for version 4.5 of the Stats Page database are located in the `v4.5` directory.
+This supplemental version adds a new `ww_postal_abbreviations` table with `postal_abbreviation`, `name`, and `country` columns used to store two-letter postal abbreviations, the corresponding state/province/territory name, and country name.
 
-Version 4.6 includes the following changes:
+![Wait Wait Don't Tell Me Stats Page Database v4.6.1 Diagram](v4.6.1/wwdtm_Diagram.png)
+
+### Version 4.6
+
+The initial database script and database diagram files for version 4.6 of the Stats Page database are located in the `v4.6` directory.
+
+Version 4.6.1 includes the following changes:
 
 - Added `latitude` and `longitude` fields to the `ww_locations` table that will be used to store the corresponding values for each location
 - Added `ww_pronouns` table to store options for preferred pronouns
@@ -32,7 +38,7 @@ Due to issues with trying to generate diagrams using either MySQL Workbench or J
 
 ![Wait Wait Don't Tell Me Stats Page Database v4.6 Diagram](v4.6/wwdtm_Diagram.png)
 
-### Version 4.5 (Current)
+### Version 4.5
 
 The initial database script and database diagram files for version 4.5 of the Stats Page database are located in the `v4.5` directory.
 
