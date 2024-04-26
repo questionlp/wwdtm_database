@@ -46,6 +46,11 @@ Table "ww_postal_abbreviations" {
   "postal_abbreviation" varchar(3) [not null]
   "name" varchar(255) [not null]
   "country" varchar(255) [not null]
+
+  Indexes {
+    postal_abbreviation [name: "postal_abbreviation"]
+    name [name: "name"]
+  }
 }
 
 Table "ww_panelists" {

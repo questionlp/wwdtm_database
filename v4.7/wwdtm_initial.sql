@@ -85,7 +85,9 @@ CREATE TABLE `ww_locations` (
   `latitude` decimal(10,7) DEFAULT NULL,
   `longitude` decimal(10,7) DEFAULT NULL,
   `locationslug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`locationid`)
+  PRIMARY KEY (`locationid`),
+  KEY `wwlocations_state_wwpostalabbreviations_postalabbreviations` (`state`),
+  CONSTRAINT `wwlocations_state_wwpostalabbreviations_postalabbreviations` FOREIGN KEY (`state`) REFERENCES `ww_postal_abbreviations` (`postal_abbreviation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -137,7 +139,9 @@ CREATE TABLE `ww_postal_abbreviations` (
   `postal_abbreviation` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `country` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`postal_abbreviation`)
+  PRIMARY KEY (`postal_abbreviation`),
+  KEY `postal_abbreviation` (`postal_abbreviation`) USING BTREE,
+  KEY `name` (`name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
