@@ -18,6 +18,14 @@ All of the tables are created as InnoDB and use a default charset of `utf8`.
 
 ## Database Versions
 
+### Version 4.7 (In Development)
+
+This version removes the `pronouns` columns in `ww_hosts`, `ww_panelists`, and `ww_scorekeepers` tables and replaces them with new tables that allow for multiple preferred pronoun sets to be added. The new tables are `ww_hostpronounsmap`, `ww_panelistpronounsmap`, and `ww_skpronounsmap`.
+
+Another change includes a relation map linking the `ww_locations.state` column with the `ww_postal_abbreviations.postal_abbreviation` column. This change allows for simplification of including a location's full state name in results while providing integrity of the fields.
+
+![Wait Wait Don't Tell Me Stats Page Database v4.7 Diagram](v4.7/wwdtm_diagram.png)
+
 ### Version 4.6.1 (Current)
 
 This supplemental version adds a new `ww_postal_abbreviations` table with `postal_abbreviation`, `name`, and `country` columns used to store two-letter postal abbreviations, the corresponding state/province/territory name, and country name.
