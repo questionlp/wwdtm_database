@@ -17,6 +17,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `__metadata`
+--
+
+DROP TABLE IF EXISTS `__metadata`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `__metadata` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `database_version` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `ww_guests`
 --
 
