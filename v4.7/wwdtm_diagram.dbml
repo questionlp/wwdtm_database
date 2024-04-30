@@ -1,8 +1,8 @@
 Table "__metadata" {
   "id" int [pk, not null, increment]
-  "version" varchar(128) [not null]
+  "keyname" varchar(128) [not null]
+  "value" varchar(255) [default: NULL]
 }
-
 
 Table "ww_guests" {
   "guestid" int [pk, not null, increment]
