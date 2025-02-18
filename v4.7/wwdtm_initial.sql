@@ -3,7 +3,7 @@
 -- wwdtm_database is released under the terms of the Apache License 2.0
 
 -- Wait Wait... Don't Tell Me! Stats Page Version 4
--- Initial Database Structure for Version 4.6
+-- Initial Database Structure for Version 4.7
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -15,6 +15,21 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `__metadata`
+--
+
+DROP TABLE IF EXISTS `__metadata`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `__metadata` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `keyname` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `ww_guests`
@@ -34,6 +49,25 @@ CREATE TABLE `ww_guests` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `ww_hostpronounsmap`
+--
+
+DROP TABLE IF EXISTS `ww_hostpronounsmap`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ww_hostpronounsmap` (
+  `hostpronounsmapid` int NOT NULL AUTO_INCREMENT,
+  `hostid` int NOT NULL,
+  `pronounsid` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`hostpronounsmapid`),
+  KEY `wwhostpronounsmap_hostid_wwhosts_hostid` (`hostid`),
+  KEY `wwhostpronounsmap_pronounsid_wwpronouns_pronounsid` (`pronounsid`),
+  CONSTRAINT `wwhostpronounsmap_hostid_wwhosts_hostid` FOREIGN KEY (`hostid`) REFERENCES `ww_hosts` (`hostid`),
+  CONSTRAINT `wwhostpronounsmap_pronounsid_wwpronouns_pronounsid` FOREIGN KEY (`pronounsid`) REFERENCES `ww_pronouns` (`pronounsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `ww_hosts`
 --
 
@@ -44,13 +78,10 @@ CREATE TABLE `ww_hosts` (
   `hostid` int NOT NULL AUTO_INCREMENT,
   `host` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `hostgender` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `hostpronouns` int DEFAULT '1',
   `hostslug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`hostid`),
   KEY `host` (`host`),
-  KEY `hostslug` (`hostslug`),
-  KEY `wwhosts_hostpronouns_wwpronouns_pronounsid` (`hostpronouns`),
-  CONSTRAINT `wwhosts_hostpronouns_wwpronouns_pronounsid` FOREIGN KEY (`hostpronouns`) REFERENCES `ww_pronouns` (`pronounsid`)
+  KEY `hostslug` (`hostslug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -69,7 +100,28 @@ CREATE TABLE `ww_locations` (
   `latitude` decimal(10,7) DEFAULT NULL,
   `longitude` decimal(10,7) DEFAULT NULL,
   `locationslug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`locationid`)
+  PRIMARY KEY (`locationid`),
+  KEY `wwlocations_state_wwpostalabbreviations_postalabbreviations` (`state`),
+  CONSTRAINT `wwlocations_state_wwpostalabbreviations_postalabbreviations` FOREIGN KEY (`state`) REFERENCES `ww_postal_abbreviations` (`postal_abbreviation`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ww_panelistpronounsmap`
+--
+
+DROP TABLE IF EXISTS `ww_panelistpronounsmap`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ww_panelistpronounsmap` (
+  `panelistpronounsmapid` int NOT NULL AUTO_INCREMENT,
+  `panelistid` int NOT NULL,
+  `pronounsid` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`panelistpronounsmapid`),
+  KEY `wwpanelistpronounsmap_panelistid_wwpanelists_panelistid` (`panelistid`),
+  KEY `wwpanelistpronounsmap_pronounsid_wwpronouns_pronounsid` (`pronounsid`),
+  CONSTRAINT `wwpanelistpronounsmap_panelistid_wwpanelists_panelistid` FOREIGN KEY (`panelistid`) REFERENCES `ww_panelists` (`panelistid`),
+  CONSTRAINT `wwpanelistpronounsmap_pronounsid_wwpronouns_pronounsid` FOREIGN KEY (`pronounsid`) REFERENCES `ww_pronouns` (`pronounsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -84,13 +136,27 @@ CREATE TABLE `ww_panelists` (
   `panelistid` int NOT NULL AUTO_INCREMENT,
   `panelist` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `panelistgender` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `panelistpronouns` int DEFAULT '1',
   `panelistslug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`panelistid`),
   KEY `panelist` (`panelist`),
-  KEY `panelistslug` (`panelistslug`),
-  KEY `wwpanelists_panelistpronouns_wwpronouns_pronounsid` (`panelistpronouns`),
-  CONSTRAINT `wwpanelists_panelistpronouns_wwpronouns_pronounsid` FOREIGN KEY (`panelistpronouns`) REFERENCES `ww_pronouns` (`pronounsid`)
+  KEY `panelistslug` (`panelistslug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ww_postal_abbreviations`
+--
+
+DROP TABLE IF EXISTS `ww_postal_abbreviations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ww_postal_abbreviations` (
+  `postal_abbreviation` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`postal_abbreviation`),
+  KEY `postal_abbreviation` (`postal_abbreviation`) USING BTREE,
+  KEY `name` (`name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -119,13 +185,10 @@ CREATE TABLE `ww_scorekeepers` (
   `scorekeeperid` int NOT NULL AUTO_INCREMENT,
   `scorekeeper` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `scorekeepergender` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `scorekeeperpronouns` int DEFAULT '1',
   `scorekeeperslug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`scorekeeperid`),
   KEY `scorekeeper` (`scorekeeper`),
-  KEY `scorekeeperslug` (`scorekeeperslug`),
-  KEY `wwscorekeepers_scorekeeperpronouns_wwpronouns_pronounsid` (`scorekeeperpronouns`),
-  CONSTRAINT `wwscorekeepers_scorekeeperpronouns_wwpronouns_pronounsid` FOREIGN KEY (`scorekeeperpronouns`) REFERENCES `ww_pronouns` (`pronounsid`)
+  KEY `scorekeeperslug` (`scorekeeperslug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -306,6 +369,25 @@ CREATE TABLE `ww_showskmap` (
   KEY `wwshowskmap_wwscorekeepers_scorekeeperid` (`scorekeeperid`),
   CONSTRAINT `wwshowskmap_wwscorekeepers_scorekeeperid` FOREIGN KEY (`scorekeeperid`) REFERENCES `ww_scorekeepers` (`scorekeeperid`),
   CONSTRAINT `wwshowskmap_wwshows_showid` FOREIGN KEY (`showid`) REFERENCES `ww_shows` (`showid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ww_skpronounsmap`
+--
+
+DROP TABLE IF EXISTS `ww_skpronounsmap`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ww_skpronounsmap` (
+  `skpronounsmapid` int NOT NULL AUTO_INCREMENT,
+  `scorekeeperid` int NOT NULL,
+  `pronounsid` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`skpronounsmapid`),
+  KEY `wwskpronounsmap_scorekeeperid_wwscorekeepers_scorekeeperid` (`scorekeeperid`),
+  KEY `wwskpronounsmap_pronounsid_wwpronouns_pronounsid` (`pronounsid`),
+  CONSTRAINT `wwskpronounsmap_pronounsid_wwpronouns_pronounsid` FOREIGN KEY (`pronounsid`) REFERENCES `ww_pronouns` (`pronounsid`),
+  CONSTRAINT `wwskpronounsmap_scorekeeperid_wwscorekeepers_scorekeeperid` FOREIGN KEY (`scorekeeperid`) REFERENCES `ww_scorekeepers` (`scorekeeperid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

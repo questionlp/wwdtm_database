@@ -1,0 +1,258 @@
+Table "__metadata" {
+  "id" int [pk, not null, increment]
+  "keyname" varchar(128) [not null]
+  "value" varchar(255) [default: NULL]
+}
+
+Table "ww_guests" {
+  "guestid" int [pk, not null, increment]
+  "guest" varchar(255) [not null]
+  "guestslug" varchar(255) [default: NULL]
+
+Indexes {
+  guest [name: "guest"]
+  guestslug [name: "guestslug"]
+}
+}
+
+Table "ww_hosts" {
+  "hostid" int [pk, not null, increment]
+  "host" varchar(255) [not null]
+  "hostgender" char(1) [default: NULL]
+  "hostslug" varchar(255) [default: NULL]
+
+Indexes {
+  host [name: "host"]
+  hostslug [name: "hostslug"]
+}
+}
+
+Table "ww_hostpronounsmap" {
+  "hostpronounsmapid" int [pk, not null, increment]
+  "hostid" int [not null]
+  "pronounsid" int [not null]
+
+  Indexes {
+    hostpronounsmapid [name: "hostpronounsmapid"]
+  }
+}
+
+Table "ww_locations" {
+  "locationid" int [pk, not null, increment]
+  "city" varchar(255) [default: NULL]
+  "state" varchar(3) [default: NULL]
+  "venue" varchar(255) [default: NULL]
+  "latitude" decimal(10,7) [default: NULL]
+  "longitude" decimal(10,7) [default: NULL]
+  "locationslug" varchar(255) [default: NULL]
+}
+
+Table "ww_postal_abbreviations" {
+  "postal_abbreviation" varchar(3) [not null]
+  "name" varchar(255) [not null]
+  "country" varchar(255) [not null]
+
+  Indexes {
+    postal_abbreviation [name: "postal_abbreviation"]
+    name [name: "name"]
+  }
+}
+
+Table "ww_panelists" {
+  "panelistid" int [pk, not null, increment]
+  "panelist" varchar(255) [not null]
+  "panelistgender" char(1) [default: NULL]
+  "panelistslug" varchar(255) [default: NULL]
+
+Indexes {
+  panelist [name: "panelist"]
+  panelistslug [name: "panelistslug"]
+}
+}
+
+Table "ww_panelistpronounsmap" {
+  "panelistpronounsmapid" int [pk, not null, increment]
+  "panelistid" int [not null]
+  "pronounsid" int [not null]
+
+  Indexes {
+    panelistpronounsmapid [name: "panelistpronounsmapid"]
+  }
+}
+
+Table "ww_pronouns" {
+  "pronounsid" int [pk, not null, increment]
+  "pronouns" varchar(255)
+}
+
+Table "ww_scorekeepers" {
+  "scorekeeperid" int [pk, not null, increment]
+  "scorekeeper" varchar(255) [not null]
+  "scorekeepergender" char(1) [default: NULL]
+  "scorekeeperslug" varchar(255) [default: NULL]
+
+Indexes {
+  scorekeeper [name: "scorekeeper"]
+  scorekeeperslug [name: "scorekeeperslug"]
+}
+}
+
+Table "ww_skpronounsmap" {
+  "skpronounsmapid" int [pk, not null, increment]
+  "scorekeeperid" int [not null]
+  "pronounsid" int [not null]
+
+  Indexes {
+    skpronounsmapid [name: "skpronounsmapid"]
+  }
+}
+
+Table "ww_showbluffmap" {
+  "showbluffmapid" int [pk, not null, increment]
+  "showid" int [not null]
+  "segment" int [not null, default: "1"]
+  "chosenbluffpnlid" int [default: NULL]
+  "correctbluffpnlid" int [default: NULL]
+
+Indexes {
+  showid [name: "wwshowbluffmap_wwshows_showid"]
+  correctbluffpnlid [name: "wwshowbluffmap_correctbluffpnlid_wwpanelists_panelistid"]
+  chosenbluffpnlid [name: "wwshowbluffmap_chosenbluffpnlid_wwpanelists_panelistid"]
+}
+}
+
+Table "ww_showdescriptions" {
+  "showid" int [pk, not null]
+  "showdescription" text
+}
+
+Table "ww_showguestmap" {
+  "showguestmapid" int [pk, not null, increment]
+  "showid" int [not null]
+  "guestid" int [not null]
+  "guestscore" int [default: NULL]
+  "exception" tinyint(1) [default: "0"]
+
+Indexes {
+  showid [name: "wwshowguestmap_wwshows_showid"]
+  guestid [name: "wwshowguestmap_wwguests_guestid"]
+}
+}
+
+Table "ww_showhostmap" {
+  "showhostmapid" int [pk, not null, increment]
+  "showid" int [not null]
+  "hostid" int [not null, default: "6"]
+  "guest" tinyint(1) [not null, default: "0"]
+
+Indexes {
+  showid [name: "wwshowhostmap_wwshows_showid"]
+  hostid [name: "wwshowhostmap_wwhosts_hostid"]
+}
+}
+
+Table "ww_showlocationmap" {
+  "showlocationmapid" int [pk, not null, increment]
+  "showid" int [not null]
+  "locationid" int [not null, default: "3"]
+
+Indexes {
+  showid [name: "ww_showlocationmap_showid"]
+  locationid [name: "ww_showlocationmap_locationid"]
+}
+}
+
+Table "ww_shownotes" {
+  "showid" int [pk, not null]
+  "shownotes" text
+}
+
+Table "ww_showpnlmap" {
+  "showpnlmapid" int [pk, not null, increment]
+  "showid" int [not null]
+  "panelistid" int [not null]
+  "panelistlrndstart" int [default: NULL]
+  "panelistlrndstart_decimal" decimal(10,2) [default: NULL]
+  "panelistlrndcorrect" int [default: NULL]
+  "panelistlrndcorrect_decimal" decimal(10,2) [default: NULL]
+  "panelistscore" int [default: NULL]
+  "panelistscore_decimal" decimal(10,2) [default: NULL]
+  "showpnlrank" char(2) [default: ""]
+
+Indexes {
+  showid [name: "wwshowpnlmap_wwshows_showid"]
+  panelistid [name: "wwshowpnlmap_wwpanelists_panelistid"]
+}
+}
+
+Table "ww_shows" {
+  "showid" int [pk, not null, increment]
+  "showdate" date [not null]
+  "repeatshowid" int [default: NULL]
+  "bestof" tinyint(1) [not null, default: "0"]
+  "bestofuniquebluff" tinyint(1) [not null, default: "0"]
+  "showurl" varchar(500) [default: NULL]
+
+Indexes {
+  repeatshowid [name: "wwshows_repeatshowid_showid"]
+}
+}
+
+Table "ww_showskmap" {
+  "showskmapid" int [pk, not null, increment]
+  "showid" int [not null]
+  "scorekeeperid" int [not null, default: "8"]
+  "guest" tinyint(1) [not null, default: "0"]
+  "description" varchar(255) [default: NULL]
+
+Indexes {
+  showid [name: "wwshowskmap_wwshows_showid"]
+  scorekeeperid [name: "wwshowskmap_wwscorekeepers_scorekeeperid"]
+}
+}
+
+Ref "wwlocations_state_wwpostalabbreviations_postalabbreviation":"ww_locations"."state" < "ww_postal_abbreviations"."postal_abbreviation"
+
+Ref "wwhostpronounsmap_hostid_wwhosts_hostid": "ww_hosts"."hostid" < "ww_hostpronounsmap"."hostid"
+
+Ref "wwhostpronounsmap_pronounsid_wwpronouns_pronounsid": "ww_pronouns"."pronounsid" < "ww_hostpronounsmap"."pronounsid"
+
+Ref "wwpanelistpronounsmap_panelistid_wwpanelists_panelistid": "ww_panelists"."panelistid" < "ww_panelistpronounsmap"."panelistid"
+
+Ref "wwpanelistpronounsmap_pronounsid_wwpronouns_pronounsid": "ww_pronouns"."pronounsid" < "ww_panelistpronounsmap"."pronounsid"
+
+Ref "wwskpronounsmap_scorekeeperid_wwscorekeepers_scorekeeperid": "ww_scorekeepers"."scorekeeperid" < "ww_skpronounsmap"."scorekeeperid"
+
+Ref "wwskpronounsmap_pronounsid_wwpronouns_pronounsid": "ww_pronouns"."pronounsid" < "ww_skpronounsmap"."pronounsid"
+
+Ref "wwshowbluffmap_chosenbluffpnlid_wwpanelists_panelistid":"ww_panelists"."panelistid" < "ww_showbluffmap"."chosenbluffpnlid"
+
+Ref "wwshowbluffmap_correctbluffpnlid_wwpanelists_panelistid":"ww_panelists"."panelistid" < "ww_showbluffmap"."correctbluffpnlid"
+
+Ref "wwshowbluffmap_wwshows_showid":"ww_shows"."showid" < "ww_showbluffmap"."showid"
+
+Ref "wwshowdescriptions_wwshows_showid":"ww_shows"."showid" < "ww_showdescriptions"."showid"
+
+Ref "wwshowguestmap_wwguests_guestid":"ww_guests"."guestid" < "ww_showguestmap"."guestid"
+
+Ref "wwshowguestmap_wwshows_showid":"ww_shows"."showid" < "ww_showguestmap"."showid"
+
+Ref "wwshowhostmap_wwhosts_hostid":"ww_hosts"."hostid" < "ww_showhostmap"."hostid"
+
+Ref "wwshowhostmap_wwshows_showid":"ww_shows"."showid" < "ww_showhostmap"."showid"
+
+Ref "ww_showlocationmap_locationid":"ww_locations"."locationid" < "ww_showlocationmap"."locationid"
+
+Ref "ww_showlocationmap_showid":"ww_shows"."showid" < "ww_showlocationmap"."showid"
+
+Ref "wwshownotes_wwshows_showid":"ww_shows"."showid" < "ww_shownotes"."showid"
+
+Ref "wwshowpnlmap_wwpanelists_panelistid":"ww_panelists"."panelistid" < "ww_showpnlmap"."panelistid"
+
+Ref "wwshowpnlmap_wwshows_showid":"ww_shows"."showid" < "ww_showpnlmap"."showid"
+
+Ref "wwshows_repeatshowid_showid":"ww_shows"."showid" < "ww_shows"."repeatshowid"
+
+Ref "wwshowskmap_wwscorekeepers_scorekeeperid":"ww_scorekeepers"."scorekeeperid" < "ww_showskmap"."scorekeeperid"
+
+Ref "wwshowskmap_wwshows_showid":"ww_shows"."showid" < "ww_showskmap"."showid"
