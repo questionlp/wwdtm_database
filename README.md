@@ -135,6 +135,10 @@ The database diagram for the database was generated using [MySQL Workbench](http
 
 If you would like contribute to this project, please make sure to review both the [Code of Conduct](CODE_OF_CONDUCT.md) and the [Contributing](CONTRIBUTING.md) documents in this repository.
 
+### AI Generated Code
+
+Please note that this project does not accept pull requests or bugfixes that include code that has been partially or wholly generated using AI.
+
 ## License
 
 The database script and schema are licensed under the terms of the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
