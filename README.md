@@ -21,7 +21,7 @@ All of the tables are created as InnoDB and use a default charset of `utf8`.
 
 ## Database Versions
 
-### Version 4.8 (In Development)
+### Version 4.8 (Current)
 
 This version adds tables for storing social media types in `ww_social_media` and mapping tables for hosts, panelists and scorekeepers:
 
@@ -35,7 +35,7 @@ Starting with version 4.8, MySQL Workbench diagrams are no longer generated or i
 
 ![Wait Wait Don't Tell Me Stats Page Database v4.8 Diagram](v4.8/wwdtm_diagram.png)
 
-### Version 4.7 (Current)
+### Version 4.7
 
 This version removes the `pronouns` columns in `ww_hosts`, `ww_panelists`, and `ww_scorekeepers` tables and replaces them with new tables that allow for multiple preferred pronoun sets to be added. The new tables are `ww_hostpronounsmap`, `ww_panelistpronounsmap`, and `ww_skpronounsmap`.
 
