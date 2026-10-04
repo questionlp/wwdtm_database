@@ -3,6 +3,41 @@
 // wwdtm_database is released under the terms of the Apache License 2.0
 // SPDX-License-Identifier: Apache-2.0
 
+Table "__metadata" {
+  "id" int [pk, not null, increment]
+  "keyname" varchar(128) [not null]
+  "value" varchar(255) [default: NULL]
+}
+
+Table "ww_social_media" {
+  "socialmediaid" int [pk, not null, increment]
+  "name" varchar(255) [not null]
+}
+
+Table "ww_hostsocialmap" {
+  "hostsocialmapid" int [pk, not null, increment]
+  "hostid" int [not null]
+  "socialmediaid" int [not null]
+  "account" varchar(255) [not null]
+  "url" varchar(255) [not null]
+}
+
+Table "ww_sksocialmap" {
+  "sksocialmapid" int [pk, not null, increment]
+  "scorekeeperid" int [not null]
+  "socialmediaid" int [not null]
+  "account" varchar(255) [not null]
+  "url" varchar(255) [not null]
+}
+
+Table "ww_panelistsocialmap" {
+  "panelistsocialmapid" int [pk, not null, increment]
+  "panelistid" int [not null]
+  "socialmediaid" int [not null]
+  "account" varchar(255) [not null]
+  "url" varchar(255) [not null]
+}
+
 Table "ww_guests" {
   "guestid" int [pk, not null, increment]
   "guest" varchar(255) [not null]
@@ -26,12 +61,35 @@ Indexes {
 }
 }
 
+Table "ww_hostpronounsmap" {
+  "hostpronounsmapid" int [pk, not null, increment]
+  "hostid" int [not null]
+  "pronounsid" int [not null]
+
+  Indexes {
+    hostpronounsmapid [name: "hostpronounsmapid"]
+  }
+}
+
 Table "ww_locations" {
   "locationid" int [pk, not null, increment]
   "city" varchar(255) [default: NULL]
   "state" varchar(3) [default: NULL]
   "venue" varchar(255) [default: NULL]
+  "latitude" decimal(10,7) [default: NULL]
+  "longitude" decimal(10,7) [default: NULL]
   "locationslug" varchar(255) [default: NULL]
+}
+
+Table "ww_postal_abbreviations" {
+  "postal_abbreviation" varchar(3) [not null]
+  "name" varchar(255) [not null]
+  "country" varchar(255) [not null]
+
+  Indexes {
+    postal_abbreviation [name: "postal_abbreviation"]
+    name [name: "name"]
+  }
 }
 
 Table "ww_panelists" {
@@ -46,6 +104,21 @@ Indexes {
 }
 }
 
+Table "ww_panelistpronounsmap" {
+  "panelistpronounsmapid" int [pk, not null, increment]
+  "panelistid" int [not null]
+  "pronounsid" int [not null]
+
+  Indexes {
+    panelistpronounsmapid [name: "panelistpronounsmapid"]
+  }
+}
+
+Table "ww_pronouns" {
+  "pronounsid" int [pk, not null, increment]
+  "pronouns" varchar(255)
+}
+
 Table "ww_scorekeepers" {
   "scorekeeperid" int [pk, not null, increment]
   "scorekeeper" varchar(255) [not null]
@@ -56,6 +129,16 @@ Indexes {
   scorekeeper [name: "scorekeeper"]
   scorekeeperslug [name: "scorekeeperslug"]
 }
+}
+
+Table "ww_skpronounsmap" {
+  "skpronounsmapid" int [pk, not null, increment]
+  "scorekeeperid" int [not null]
+  "pronounsid" int [not null]
+
+  Indexes {
+    skpronounsmapid [name: "skpronounsmapid"]
+  }
 }
 
 Table "ww_showbluffmap" {
@@ -161,6 +244,32 @@ Indexes {
   scorekeeperid [name: "wwshowskmap_wwscorekeepers_scorekeeperid"]
 }
 }
+
+Ref "wwlocations_state_wwpostalabbreviations_postalabbreviation":"ww_locations"."state" < "ww_postal_abbreviations"."postal_abbreviation"
+
+Ref "wwhostpronounsmap_hostid_wwhosts_hostid": "ww_hosts"."hostid" < "ww_hostpronounsmap"."hostid"
+
+Ref "wwhostpronounsmap_pronounsid_wwpronouns_pronounsid": "ww_pronouns"."pronounsid" < "ww_hostpronounsmap"."pronounsid"
+
+Ref "wwhostsocialmap_hostid_wwhosts_hostid": "ww_hosts"."hostid" < "ww_hostsocialmap"."hostid"
+
+Ref "wwhostsocialmap_socialmediaid_wwsocialmedia_soecialmediaid": "ww_social_media"."socialmediaid" < "ww_hostsocialmap"."socialmediaid"
+
+Ref "wwpanelistpronounsmap_panelistid_wwpanelists_panelistid": "ww_panelists"."panelistid" < "ww_panelistpronounsmap"."panelistid"
+
+Ref "wwpanelistpronounsmap_pronounsid_wwpronouns_pronounsid": "ww_pronouns"."pronounsid" < "ww_panelistpronounsmap"."pronounsid"
+
+Ref "wwpanelistsocialmap_panelistid_wwpanelists_panelistid": "ww_panelists"."panelistid" < "ww_panelistsocialmap"."panelistid"
+
+Ref "wwpanelistsocialmap_socialmediaid_wwsocialmedia_soecialmediaid": "ww_social_media"."socialmediaid" < "ww_panelistsocialmap"."socialmediaid"
+
+Ref "wwskpronounsmap_scorekeeperid_wwscorekeepers_scorekeeperid": "ww_scorekeepers"."scorekeeperid" < "ww_skpronounsmap"."scorekeeperid"
+
+Ref "wwskpronounsmap_pronounsid_wwpronouns_pronounsid": "ww_pronouns"."pronounsid" < "ww_skpronounsmap"."pronounsid"
+
+Ref "wwsksocialmap_scorekeeperid_wwscorekeeperss_scorekeeperid": "ww_scorekeepers"."scorekeeperid" < "ww_sksocialmap"."scorekeeperid"
+
+Ref "wwsksocialmap_socialmediaid_wwsocialmedia_soecialmediaid": "ww_social_media"."socialmediaid" < "ww_sksocialmap"."socialmediaid"
 
 Ref "wwshowbluffmap_chosenbluffpnlid_wwpanelists_panelistid":"ww_panelists"."panelistid" < "ww_showbluffmap"."chosenbluffpnlid"
 
