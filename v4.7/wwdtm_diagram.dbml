@@ -1,3 +1,8 @@
+// -*- coding: utf-8 -*-
+// Copyright (c) 2018-2026 Linh Pham
+// wwdtm_database is released under the terms of the Apache License 2.0
+// SPDX-License-Identifier: Apache-2.0
+
 Table "__metadata" {
   "id" int [pk, not null, increment]
   "keyname" varchar(128) [not null]

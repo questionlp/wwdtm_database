@@ -8,8 +8,9 @@ This repository contains the initial database schema for the [Wait Wait Don't Te
 
 ## Requirements
 
+- MySQL Server 8.0 or newer or MariaDB Server 11.8 or newer for Wait Wait Stats Database versions 4.8 and higher
 - MySQL Server 8.0 or newer for Wait Wait Stats Database versions 4.0 and higher
-- MySQL Server 5.6 or MariaDB Server 10.0 or newer for Wait Wait Stats Database versions below 4.0
+- MySQL Server 5.6 or MariaDB Server 10.0 or newer for Wait Wait Stats Database versions prior to 4.0
 - Support for InnoDB enabled for either MySQL Server or MariaDB server
 
 ## Installation
@@ -20,7 +21,21 @@ All of the tables are created as InnoDB and use a default charset of `utf8`.
 
 ## Database Versions
 
-### Version 4.7 (Current)
+### Version 4.8 (Current)
+
+This version adds tables for storing social media types in `ww_social_media` and mapping tables for hosts, panelists and scorekeepers:
+
+- `ww_hostsocialmap`
+- `ww_panelistsocialmap`
+- `ww_sksocialmap`
+
+Each of the mapping tables includes the mapping ID, corresponding host, panelist or scorekeeper ID, social media type ID, account name, and full URL for their particular social media account.
+
+Starting with version 4.8, MySQL Workbench diagrams are no longer generated or included in the repository. In place of MySQL Workbench diagrams, an OpenDocument Drawing version of the diagram is included.
+
+![Wait Wait Don't Tell Me Stats Page Database v4.8 Diagram](v4.8/wwdtm_diagram.png)
+
+### Version 4.7
 
 This version removes the `pronouns` columns in `ww_hosts`, `ww_panelists`, and `ww_scorekeepers` tables and replaces them with new tables that allow for multiple preferred pronoun sets to be added. The new tables are `ww_hostpronounsmap`, `ww_panelistpronounsmap`, and `ww_skpronounsmap`.
 
