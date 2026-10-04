@@ -12,6 +12,7 @@ Table "__metadata" {
 Table "ww_social_media" {
   "socialmediaid" int [pk, not null, increment]
   "name" varchar(255) [not null]
+  "slug" varchar(255) [default: NULL]
 }
 
 Table "ww_hostsocialmap" {
