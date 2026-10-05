@@ -23,13 +23,13 @@ All of the tables are created as InnoDB and use a default charset of `utf8`.
 
 ### Version 4.8 (Current)
 
-This version adds tables for storing social media types in `ww_social_media` and mapping tables for hosts, panelists and scorekeepers:
+This version adds tables for storing social media types in `ww_socialmedianetworks` and mapping tables for hosts, panelists and scorekeepers:
 
 - `ww_hostsocialmap`
 - `ww_panelistsocialmap`
 - `ww_sksocialmap`
 
-Each of the mapping tables includes the mapping ID, corresponding host, panelist or scorekeeper ID, social media type ID, account name, and full URL for their particular social media account.
+Each of the mapping tables includes the mapping ID, corresponding host, panelist or scorekeeper ID, social media network ID, account name, and full URL for their particular social media account.
 
 Starting with version 4.8, MySQL Workbench diagrams are no longer generated or included in the repository. In place of MySQL Workbench diagrams, an OpenDocument Drawing version of the diagram is included.
 
